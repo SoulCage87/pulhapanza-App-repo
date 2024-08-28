@@ -5,6 +5,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonIcon, IonLabel, IonInpu
 import { addIcons } from 'ionicons';
 import { arrowBack, lockClosedOutline, personOutline, mailOutline, calendarOutline, arrowBackOutline, idCardOutline, callOutline } from 'ionicons/icons'
 import { registerDto } from '../../models/register.dto';
+import { Router } from '@angular/router';
 
 
 
@@ -31,6 +32,9 @@ import { registerDto } from '../../models/register.dto';
 export class RegisterPage{
 
   private formBuilder: FormBuilder = inject(FormBuilder)
+  private _router: Router = inject(Router)
+
+
   registerDTO: registerDto = {} as registerDto
   spinner: boolean = false
 
@@ -98,6 +102,10 @@ guardar(): void {
     this.registerForm.reset();
     this.spinner = false;
   }, 5000)
+}
+
+goLogin(): void {
+  this._router.navigate(['/login']);
 }
 
 }

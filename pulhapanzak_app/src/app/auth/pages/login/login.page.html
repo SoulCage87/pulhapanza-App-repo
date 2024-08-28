@@ -8,13 +8,14 @@
 
   <ion-card>
     <ion-card-content>
-      <form [formGroup]="loginForm" (ngSubmit)="saveInfo()">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
         <ion-item>
           <ion-label>
             <ion-icon name="mail" color="danger"></ion-icon>
             <ion-text style="font-size: 18px;">Correo Electronico</ion-text>
-            <ion-input type="text" [ngClass]="{'invalid-input': isEmailInvalid || isEmailRequired }" formControlName="correo" class="input-login"></ion-input>
+            <ion-input type="text" [ngClass]="{'invalid-input': isEmailInvalid || isEmailRequired }"
+              formControlName="correo" class="input-login"></ion-input>
             <ion-note color="danger" *ngIf="isEmailInvalid || isEmailRequired">
               <span *ngIf="isEmailInvalid">El correo es Invalido!</span>
               <span *ngIf="isEmailRequired">El campo es requerido!</span>
@@ -26,12 +27,17 @@
           <ion-label>
             <ion-icon name="lock-closed" color="danger"></ion-icon>
             <ion-text style="font-size: 18px;">Contraseña</ion-text>
-            <ion-input type="password" [ngClass]="{'invalid-input': isPassInvalid}" formControlName="pass" class="input-login">
+            <ion-input type="password" [ngClass]="{'invalid-input': isPassInvalid}" formControlName="pass"
+              class="input-login">
               <ion-input-password-toggle slot="end" color="danger"></ion-input-password-toggle>
             </ion-input>
             <ion-note color="danger" *ngIf="isPassInvalid">La contraseña es necesaria!</ion-note>
           </ion-label>
         </ion-item>
+
+        <div id="forgotten-pass"> 
+          <ion-text slot="end">Olvidaste tu contraseña?</ion-text>
+        </div>
 
         <ion-button color="danger" type="submit" id="login-btn" [disabled]="isLoginValid || disabled">
           Iniciar Sesion
@@ -39,7 +45,31 @@
           </ion-spinner>
         </ion-button>
 
+
       </form>
+
+      <ion-item id="or-options"></ion-item>
+
+      <ion-row>
+        <ion-col>
+          <ion-button id="google-btn" expand="block" fill="outline" (click)="googleSignIn()">
+            <ion-icon src="../../../../assets/icon/google.svg"></ion-icon>
+            <p>Iniciar Sesion con Google</p>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+      <ion-item id="account-create">
+        <ion-row>
+          <ion-col size="auto">
+            <p>¿No tienes cuenta?</p>
+          </ion-col>
+          <ion-col size="auto">
+            <p id="register-create" (click)="goRegister()">¡Registrate ahora!</p>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+
     </ion-card-content>
   </ion-card>
 

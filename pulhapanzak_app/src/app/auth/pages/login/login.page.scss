@@ -1,23 +1,81 @@
-#login-btn{
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+
+#login-btn {
     left: 20px;
-    border-radius: 20px;
+    --border-radius: 20px !important;
     align-self: center;
     width: 100%;
     margin-top: 15px;
 }
 
-.input-login{
-    --background: #fff; 
-    --border-radius: 10px; 
+.input-login {
+    --background: #fff;
+    --border-radius: 10px;
     --padding-start: 10px;
 }
 
-ion-text{
+ion-text {
     font-size: 16px;
     margin-left: 10px;
 }
 
-.invalid-input{
+.invalid-input {
     border: 2px solid red;
     border-radius: 15px;
+}
+
+#google-btn {
+    --border-radius: 20px !important;
+    margin-top: 10px;
+    --border-color: rgb(199, 199, 199) !important;
+}
+
+#google-btn > p {
+    --font-size: 10px;
+    font-family: 'Roboto', sans-serif !important;
+    margin-left: 16px;
+    color: rgb(63, 62, 62);
+}
+
+#or-options {
+    border-bottom: 10px;
+    --height: 18px !important;
+    margin-bottom: 18px;
+}
+
+#or-oprtions>ion-text {
+    --font-size: 10px;
+    --text-align: center !important;
+
+}
+
+#account-create {
+    align-self: center;
+    left: 10px !important;
+}
+
+#account-create > p {
+    align-self: center;
+    font-size: 10px;
+    font-family: Roboto, sans-serif;
+}
+
+#register-create {
+    cursor: pointer;
+    color: rgb(81, 141, 94);
+    text-decoration: underline;
+}
+
+#forgotten-pass{
+    cursor: pointer;
+    color: rgb(81, 141, 94);
+    border: none;
+    text-align: end;
+    font-size: smaller;
+    margin-top: 10px;
+}
+
+#forgotten-pass > ion-text{
+   font-size: small;
 }

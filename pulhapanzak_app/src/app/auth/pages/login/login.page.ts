@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AbstractControl ,FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { addIcons } from 'ionicons';
-import { mail, lockClosed } from 'ionicons/icons'
+import { mail, lockClosed, logoGoogle } from 'ionicons/icons'
 import {
   IonCard,
   IonCardContent,
@@ -18,9 +18,14 @@ import {
   IonText,
   IonNote,
   IonItem,
+  IonRow,
+  IonCol,
   IonIcon
 } from '@ionic/angular/standalone';
 import { loginDto } from '../../models/login.dto';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login-page',
@@ -30,6 +35,7 @@ import { loginDto } from '../../models/login.dto';
   imports: [IonContent,
     IonCard,
     IonCardContent,
+    IonCol,
     IonHeader,
     IonTitle,
     IonInputPasswordToggle,
@@ -40,6 +46,7 @@ import { loginDto } from '../../models/login.dto';
     IonIcon,
     IonButton,
     IonSpinner,
+    IonRow,
     IonItem,
     IonText,
     CommonModule,
@@ -47,6 +54,10 @@ import { loginDto } from '../../models/login.dto';
     ReactiveFormsModule]
 })
 export class LoginPage {
+
+  private _authService: AuthService = inject(AuthService);
+  private _router: Router = inject(Router);
+  private _toastController: ToastController = inject(ToastController);
 
   private formBuiler: FormBuilder = inject(FormBuilder);
   loginDTO: loginDto = {} as loginDto
@@ -61,7 +72,7 @@ export class LoginPage {
   });
 
   constructor() {
-    addIcons({ mail, lockClosed })
+    addIcons({ mail, lockClosed, logoGoogle })
   }
 
 get isLoginValid(): boolean {
@@ -83,16 +94,42 @@ get isPassInvalid(): boolean {
   return control ? control.invalid && control.touched : false
 }
 
-saveInfo(): void {
-  this.spinner = true;
-  this.disabled= true
-  setTimeout(()=> {
+
+async toastMessage(message: string, isError: boolean = true): Promise<void> {
+  const toast = await this._toastController.create({
+    message: message,
+    duration: 7000,
+    color: isError ? 'danger' : 'success',
+  });
+  return toast.present()
+}
+
+onSubmit(): void {
+  if(!this.isLoginValid){
+    this.spinner = true;
+    this.disabled = true;
     this.loginDTO = this.loginForm.value as loginDto;
-    console.log(this.loginDTO);
-    this.loginForm.reset();
-    this.spinner = false;
-    this.disabled = false
-  }, 10000)
+
+    this._authService.login(this.loginDTO).then(async(user) => {
+      this.spinner = false
+      this.disabled = false;
+      console.log(user)
+      await this.toastMessage('Login exitoso', false);
+      this._router.navigate(['/home']);
+    }).catch(async () => {
+      this.spinner = false;
+      this.disabled = false;
+      await this.toastMessage('Correo o contraseña invalidos')
+    })
+  }
+}
+
+ async googleSignIn(): Promise<void> {
+ await this.toastMessage('Proximamente!', false); 
+}
+
+goRegister(): void {
+  this._router.navigate(['/register']);
 }
 
 }
