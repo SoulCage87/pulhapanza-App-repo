@@ -1,7 +1,0 @@
-{
-  "name": "pulhapanzak-app",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}
