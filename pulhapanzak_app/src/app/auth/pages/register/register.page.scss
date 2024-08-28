@@ -1,0 +1,36 @@
+.registro-input{
+    --background: #fff; 
+    --border-radius: 10px; 
+    --padding-start: 10px;
+}
+
+ion-input {
+    --background: #fff; 
+    --border-radius: 10px;
+    --padding-start: 10px;
+  }
+
+  #btn-registro{
+    align-self: center; 
+    margin-top: 10px; 
+    width: 100%; 
+    text-align: center;
+  }
+
+  #register-btn{
+    border-radius: 20px;
+  }
+
+  #arrow-back{
+    size: 20px;
+    color: white;
+    width: 45px;
+    height: 25px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+
+  .invalid-input{
+    border: 2px solid red;
+    border-radius: 15px;
+  }

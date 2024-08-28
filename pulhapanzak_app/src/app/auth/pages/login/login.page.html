@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="danger">
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <h2 style="text-align: center; color: red; font-weight: bold;">Inicio de Sesión</h2>
+
+  <ion-card>
+    <ion-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="saveInfo()">
+
+        <ion-item>
+          <ion-label>
+            <ion-icon name="mail" color="danger"></ion-icon>
+            <ion-text style="font-size: 18px;">Correo Electronico</ion-text>
+            <ion-input type="text" [ngClass]="{'invalid-input': isEmailInvalid || isEmailRequired }" formControlName="correo" class="input-login"></ion-input>
+            <ion-note color="danger" *ngIf="isEmailInvalid || isEmailRequired">
+              <span *ngIf="isEmailInvalid">El correo es Invalido!</span>
+              <span *ngIf="isEmailRequired">El campo es requerido!</span>
+            </ion-note>
+          </ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>
+            <ion-icon name="lock-closed" color="danger"></ion-icon>
+            <ion-text style="font-size: 18px;">Contraseña</ion-text>
+            <ion-input type="password" [ngClass]="{'invalid-input': isPassInvalid}" formControlName="pass" class="input-login"></ion-input>
+            <ion-note color="danger" *ngIf="isPassInvalid">La contraseña es necesaria!</ion-note>
+          </ion-label>
+        </ion-item>
+
+        <ion-button color="danger" type="submit" id="login-btn" [disabled]="isLoginValid">
+          Iniciar Sesion
+          <ion-spinner *ngIf="spinner" id="spinner-login">
+          </ion-spinner>
+        </ion-button>
+
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

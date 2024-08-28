@@ -1,0 +1,99 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="danger">
+      <ion-icon id="arrow-back" name="arrow-back-outline"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+
+      <ion-title size="large"></ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+  <h2 style="text-align: center; color: red; font-weight: bold;">Registro</h2>
+
+  <form [formGroup]="registerForm" (ngSubmit)="guardar()">
+
+  <ion-item>
+    <ion-label>
+      <ion-icon name="person-outline" color="danger">
+      </ion-icon>
+      <ion-text style="margin-left: 10px;">Nombres</ion-text>
+      <ion-input [ngClass]="{'invalid-input': isNombreInvalid}" class="registro-input" formControlName="nombre" type="text">
+      </ion-input>
+      <ion-note *ngIf="isNombreInvalid" class="form-error-message">El campo es requerido!</ion-note>
+    </ion-label>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>
+      <ion-icon name="person-outline" color="danger">
+      </ion-icon>
+      <ion-text style="margin-left: 10px;">Apellidos</ion-text>
+      <ion-input [ngClass]="{'invalid-input': isApellidoInvalid}" type="text" formControlName="apellido">
+      </ion-input>
+      <ion-note *ngIf="isApellidoInvalid" class="form-error-message">El campo es requerido!</ion-note>
+    </ion-label>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>
+      <ion-icon name="mail-outline" color="danger">
+      </ion-icon>
+      <ion-text style="margin-left: 10px;">Correo Electronico</ion-text>
+      <ion-input [ngClass]="{'invalid-input': isEmailInvalid}" type="email" formControlName="email">
+      </ion-input>
+      <ion-note *ngIf="isEmailInvalid" class="form-error-message">El campo es requerido!</ion-note>
+    </ion-label>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>
+      <ion-icon name="lock-closed-outline" color="danger">
+      </ion-icon>
+      <ion-text style="margin-left: 10px;">Contraseña</ion-text>
+      <ion-input [ngClass]="{'invalid-input': isPassInvalid}" type="password" formControlName="password">
+      </ion-input>
+      <ion-note *ngIf="isPassInvalid" class="form-error-message">El campo es requerido!</ion-note>
+    </ion-label>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>
+      <ion-icon name="id-card-outline" color="danger">
+      </ion-icon>
+      <ion-text style="margin-left: 10px;">Numero de identidad</ion-text>
+      <ion-input type="number" formControlName="ID" [ngClass]="{'invalid-input': isIDInvalid}">
+      </ion-input>
+      <ion-note *ngIf="isIDInvalid" class="form-error-message">El campo es requerido!</ion-note>
+    </ion-label>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>
+      <ion-icon name="call-outline" color="danger">
+      </ion-icon>
+      <ion-text style="margin-left: 10px;">Numero de telefono</ion-text>
+      <ion-input [ngClass]="{'invalid-input': isTelefonoInvalid}" type="number" formControlName="telefono">
+      </ion-input>
+      <ion-note *ngIf="isTelefonoInvalid" class="form-error-message">El campo es requerido!</ion-note>
+    </ion-label>
+  </ion-item>
+
+
+
+  <div id="btn-registro">
+    <ion-button color="danger" type="submit" id="register-btn" [disabled]="isFormInvalid">
+      Registrarse
+      <ion-spinner *ngIf="spinner">
+      </ion-spinner>
+    </ion-button>
+  </div>
+
+</form>
+
+
+</ion-content>

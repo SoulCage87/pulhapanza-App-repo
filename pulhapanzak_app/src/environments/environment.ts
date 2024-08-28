@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig: {
+      "projectId": "pulha-app-f377c",
+      "appId": "1:232780503512:web:41070f20185ac2e0b37aad",
+      "storageBucket": "pulha-app-f377c.appspot.com",
+      "locationId": "us-central",
+      "apiKey": "AIzaSyBDW5od0uN2vaTjNsveIDVUUYMbt8pQwX4"
+      , "authDomain": "pulha-app-f377c.firebaseapp.com"
+      , "messagingSenderId": "232780503512"
+    }
 };
 
 /*

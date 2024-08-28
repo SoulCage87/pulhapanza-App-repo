@@ -1,0 +1,23 @@
+#login-btn{
+    left: 20px;
+    border-radius: 20px;
+    align-self: center;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.input-login{
+    --background: #fff; 
+    --border-radius: 10px; 
+    --padding-start: 10px;
+}
+
+ion-text{
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.invalid-input{
+    border: 2px solid red;
+    border-radius: 15px;
+}
