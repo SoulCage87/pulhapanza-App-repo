@@ -9,6 +9,7 @@ import {
   IonContent,
   IonHeader,
   IonTitle,
+  IonInputPasswordToggle,
   IonToolbar,
   IonLabel,
   IonInput,
@@ -31,6 +32,7 @@ import { loginDto } from '../../models/login.dto';
     IonCardContent,
     IonHeader,
     IonTitle,
+    IonInputPasswordToggle,
     IonToolbar,
     IonNote,
     IonLabel,
@@ -50,6 +52,7 @@ export class LoginPage {
   loginDTO: loginDto = {} as loginDto
 
   spinner: boolean = false
+  disabled: boolean = false
 
 
   loginForm: FormGroup = this.formBuiler.group({
@@ -82,12 +85,13 @@ get isPassInvalid(): boolean {
 
 saveInfo(): void {
   this.spinner = true;
+  this.disabled= true
   setTimeout(()=> {
     this.loginDTO = this.loginForm.value as loginDto;
     console.log(this.loginDTO);
     this.loginForm.reset();
     this.spinner = false;
-    
+    this.disabled = false
   }, 10000)
 }
 

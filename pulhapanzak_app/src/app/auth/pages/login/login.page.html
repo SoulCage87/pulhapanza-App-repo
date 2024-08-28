@@ -26,12 +26,14 @@
           <ion-label>
             <ion-icon name="lock-closed" color="danger"></ion-icon>
             <ion-text style="font-size: 18px;">Contraseña</ion-text>
-            <ion-input type="password" [ngClass]="{'invalid-input': isPassInvalid}" formControlName="pass" class="input-login"></ion-input>
+            <ion-input type="password" [ngClass]="{'invalid-input': isPassInvalid}" formControlName="pass" class="input-login">
+              <ion-input-password-toggle slot="end" color="danger"></ion-input-password-toggle>
+            </ion-input>
             <ion-note color="danger" *ngIf="isPassInvalid">La contraseña es necesaria!</ion-note>
           </ion-label>
         </ion-item>
 
-        <ion-button color="danger" type="submit" id="login-btn" [disabled]="isLoginValid">
+        <ion-button color="danger" type="submit" id="login-btn" [disabled]="isLoginValid || disabled">
           Iniciar Sesion
           <ion-spinner *ngIf="spinner" id="spinner-login">
           </ion-spinner>
