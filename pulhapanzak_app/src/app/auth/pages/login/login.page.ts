@@ -132,5 +132,9 @@ goRegister(): void {
   this._router.navigate(['/register']);
 }
 
+goResetPass():void {
+  this._router.navigate(['/reset']);
+}
+
 }
 
