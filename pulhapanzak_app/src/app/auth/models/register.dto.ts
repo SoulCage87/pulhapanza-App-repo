@@ -1,8 +1,9 @@
 export interface registerDto{
     nombre: string,
     apellido: string,
-    email: string, 
-    password: string,
+    correo: string, 
+    pass: string,
     telefono: string,
     ID: string,
+    uid: string
 };
