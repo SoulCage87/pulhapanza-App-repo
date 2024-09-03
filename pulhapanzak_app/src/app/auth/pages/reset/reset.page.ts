@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, AbstractControl, FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, AbstractControl } from '@angular/forms';
 import {
   IonContent,
   IonIcon,
@@ -38,7 +38,6 @@ import { AlertController } from '@ionic/angular';
     IonNote,
     IonToolbar,
     CommonModule,
-    FormsModule,
     ReactiveFormsModule,]
 })
 export class ResetPage {
