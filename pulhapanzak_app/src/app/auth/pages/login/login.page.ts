@@ -98,7 +98,7 @@ get isPassInvalid(): boolean {
 async toastMessage(message: string, isError: boolean = true): Promise<void> {
   const toast = await this._toastController.create({
     message: message,
-    duration: 7000,
+    duration: 3000,
     color: isError ? 'danger' : 'success',
   });
   return toast.present()
@@ -115,7 +115,8 @@ onSubmit(): void {
       this.disabled = false;
       console.log(user)
       await this.toastMessage('Login exitoso', false);
-      this._router.navigate(['/home']);
+      this._router.navigate(['/tabs/home']);
+      this.loginForm.reset();
     }).catch(async () => {
       this.spinner = false;
       this.disabled = false;
