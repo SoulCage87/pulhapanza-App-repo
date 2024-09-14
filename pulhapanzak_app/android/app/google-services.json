@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "232780503512",
+    "project_id": "pulha-app-f377c",
+    "storage_bucket": "pulha-app-f377c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:232780503512:android:34dd1d9986623ec2b37aad",
+        "android_client_info": {
+          "package_name": "com.SamuelGalo.pulhaApp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_ujgXYYQS83WlrPdBq5XFXW5LevBnlIo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -12,6 +12,7 @@ import {
   IonSpinner,
   IonNote,
   IonTitle,
+  AlertController,
   IonToolbar
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
@@ -19,8 +20,6 @@ import { arrowBackOutline } from 'ionicons/icons';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { loginDto } from '../../models/login.dto';
-import { AlertController } from '@ionic/angular';
-
 @Component({
   selector: 'app-reset',
   templateUrl: './reset.page.html',

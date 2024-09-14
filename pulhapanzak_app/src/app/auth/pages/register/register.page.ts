@@ -1,14 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonIcon, IonLabel, IonInput, IonItem, IonText, IonButton, IonSpinner, IonNote } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonIcon, IonLabel, IonInput, IonItem, IonText, IonButton, IonSpinner, IonNote, AlertController } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { arrowBack, lockClosedOutline, personOutline, mailOutline, calendarOutline, arrowBackOutline, idCardOutline, callOutline } from 'ionicons/icons'
 import { registerDto } from '../../models/register.dto';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
 import { AuthService } from '../../services/auth.service';
-import { user } from '@angular/fire/auth';
 
 
 
@@ -118,7 +116,7 @@ export class RegisterPage {
           this.disabled = false;
           await this.alertMessage('Te has registrado exitosamente!', 'Bienvenido!');
           this.registerForm.reset()
-          this._router.navigate(['/home'])
+          this._router.navigate(['/tabs/home'])
         })
       }).catch(async (error) => {
         console.error(error);

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">pulhaApp</string>
+    <string name="title_activity_main">pulhaApp</string>
+    <string name="package_name">com.SamuelGalo.pulhaApp</string>
+    <string name="custom_url_scheme">com.SamuelGalo.pulhaApp</string>
+</resources>

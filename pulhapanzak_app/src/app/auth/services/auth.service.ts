@@ -11,7 +11,7 @@ import {
 } from '@angular/fire/auth';
 import { loginDto } from '../models/login.dto';
 import { CollectionReference, Firestore } from '@angular/fire/firestore';
-import { collection, doc, DocumentReference, getDoc, setDoc } from 'firebase/firestore';
+import { collection, doc, DocumentReference, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import { registerDto } from '../models/register.dto';
 
 const PATH: string = 'users'
@@ -73,8 +73,24 @@ export class AuthService {
       apellido: user.apellido,
       correo: user.correo,
       telefono: user.telefono,
+      photo: 'https://i.pinimg.com/236x/e8/d7/d0/e8d7d05f392d9c2cf0285ce928fb9f4a.jpg',
       ID: user.ID,
       uid: user.uid
+    });
+  }
+
+  async updateUser(user: registerDto): Promise<void> {
+    if (!user.uid) throw new Error('User UID is required');
+
+    const docRef = doc(this._collection, user.uid);
+    await updateDoc(docRef, {
+      ...{
+        nombre: user.nombre,
+        apellido: user.apellido,
+        telefono: user.telefono,
+        ID: user.ID,
+        photo: user.photo,
+      },
     });
   }
 
@@ -89,10 +105,6 @@ export class AuthService {
   }
 
   async signUp(model: loginDto): Promise<UserCredential> {
-    const isUserLogged: boolean = await this.isUserLogged();
-    if (isUserLogged) return Promise.reject('User Logged');
-
-
     return await createUserWithEmailAndPassword(this._auth,
       model.correo,
       model.pass)

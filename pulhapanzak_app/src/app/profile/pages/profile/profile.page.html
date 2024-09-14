@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>profile</ion-title>
+    <ion-title>Perfil de Usuario</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,5 +11,78 @@
     </ion-toolbar>
   </ion-header>
 
-  <h1>HOLA MUNDO</h1>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+    <ion-item id="profile-container">
+      <ion-img [src]="user.photo" (click)="onPickImage()" class="user-profile">
+      </ion-img>
+    </ion-item> 
+
+    <ion-item>
+      <ion-label>
+        <ion-icon name="person-outline">
+        </ion-icon>
+        <ion-text style="margin-left: 10px;">Nombre</ion-text>
+        <ion-input [ngClass]="{'invalid-input': isNombreInvalid}" class="registro-input" formControlName="nombre"
+          type="text">
+        </ion-input>
+        <ion-note *ngIf="isNombreInvalid" class="form-error-message">El campo es requerido!</ion-note>
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        <ion-icon name="person-outline">
+        </ion-icon>
+        <ion-text style="margin-left: 10px;">Apellido</ion-text>
+        <ion-input [ngClass]="{'invalid-input': isApellidoInvalid}" type="text" formControlName="apellido">
+        </ion-input>
+        <ion-note *ngIf="isApellidoInvalid" class="form-error-message">El campo es requerido!</ion-note>
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        <ion-icon name="call-outline">
+        </ion-icon>
+        <ion-text style="margin-left: 10px;">Numero de telefono</ion-text>
+        <ion-input [ngClass]="{'invalid-input': isTelefonoInvalid}" maxlength="8" max="8" type="string" formControlName="telefono">
+        </ion-input>
+        <ion-note *ngIf="isTelefonoInvalid || isTelefonoMinLenght" class="form-error-message">
+          <span *ngIf="isTelefonoInvalid">El campo es requerido!</span>
+          <span *ngIf="isTelefonoMinLenght">Numero incompleto!</span>
+        </ion-note>
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        <ion-icon name="person-outline">
+        </ion-icon>
+        <ion-text style="margin-left: 10px;">Identidad</ion-text>
+        <ion-input [ngClass]="{'invalid-input': isIDInvalid}" class="registro-input" formControlName="ID"
+          type="text">
+        </ion-input>
+        <span *ngIf="isIDInvalid || isIDMinLenght" class="form-error-message">
+          <ion-note *ngIf="isIDInvalid" class="">El campo es requerido!</ion-note>
+          <ion-note *ngIf="isIDMinLenght" class="">Minimo 13</ion-note>
+        </span>
+        
+      </ion-label>
+    </ion-item>
+
+    <div id="btn-registro">
+      <ion-button expand="block" color="primary" type="submit" id="register-btn" [disabled]="isFormInvalid || disabled">
+        Guardar
+        <ion-spinner *ngIf="spinner">
+        </ion-spinner>
+      </ion-button>
+    </div>
+
+  </form>
+
+  <ion-button style="margin-top: 6px;" fill="outline" expand="block" (click)="signOut()">
+    <ion-icon name="log-out-outline"></ion-icon>
+    Cerrar Sesion</ion-button>
+
 </ion-content>
