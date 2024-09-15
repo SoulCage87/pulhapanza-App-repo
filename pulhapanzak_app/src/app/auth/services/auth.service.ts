@@ -10,11 +10,13 @@ import {
   User
 } from '@angular/fire/auth';
 import { loginDto } from '../models/login.dto';
-import { CollectionReference, Firestore } from '@angular/fire/firestore';
+import { addDoc, CollectionReference, Firestore } from '@angular/fire/firestore';
 import { collection, doc, DocumentReference, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import { registerDto } from '../models/register.dto';
+import { DeviceDto } from '../models/device.dto';
 
 const PATH: string = 'users'
+const PATHDevice: string = 'device'
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +26,7 @@ export class AuthService {
   private _auth: Auth = inject(Auth);
   private _firestore: Firestore = inject(Firestore);
   private _collection: CollectionReference = collection(this._firestore, PATH);
+  private _collectionDevice: CollectionReference = collection(this._firestore, PATHDevice);
 
   constructor() { }
 
@@ -38,6 +41,11 @@ export class AuthService {
         }
       })
     })
+  }
+
+  async getCurrentUserId(): Promise<string | null> {
+    const user = await this.getCurrenUser();
+    return user?.uid ?? null;
   }
 
   async getUserById(): Promise<registerDto> {
@@ -126,7 +134,12 @@ export class AuthService {
     }
   }
 
-  
+  async createDevice(device: DeviceDto): Promise<void> {
+    const devicePath: CollectionReference = collection(this._firestore, PATHDevice);
+    await addDoc(devicePath, device);
+  }
+
+
 }
 
 
