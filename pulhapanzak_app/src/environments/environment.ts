@@ -12,7 +12,8 @@ export const environment = {
       "apiKey": "AIzaSyBDW5od0uN2vaTjNsveIDVUUYMbt8pQwX4"
       , "authDomain": "pulha-app-f377c.firebaseapp.com"
       , "messagingSenderId": "232780503512"
-    }
+    },
+    API_URL: 'https://rickandmortyapi.com/api/character'
 };
 
 /*

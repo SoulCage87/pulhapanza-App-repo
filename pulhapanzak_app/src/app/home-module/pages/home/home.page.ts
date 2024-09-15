@@ -4,31 +4,25 @@ import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton } from '@ionic/angular/standalone';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import { HomeService } from '../../services/home.service';
+import { CardComponent } from '../../components/card/card.component';
+import { CharacterDto } from '../../models/character.dto';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, CommonModule],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, CommonModule, CardComponent],
 })
 export class HomePage implements OnInit {
 
   private _authService: AuthService = inject(AuthService);
-  private _router: Router = inject(Router);
-  private _toastController: ToastController = inject(ToastController);
+  private _homeService: HomeService = inject(HomeService);
 
   nombre: string = '';
   apellido: string = '';
-
-  async toastMessage(message: string, color: boolean = true): Promise<void> {
-    const toast = await this._toastController.create({
-      message: message,
-      duration: 5000,
-      color: color ? 'success' : 'danger'
-    })
-    return toast.present()
-  }
+  characters: CharacterDto[] = [];
 
   ngOnInit() {
     this._authService.getUserById().then((user) => {
@@ -37,18 +31,10 @@ export class HomePage implements OnInit {
     }).catch((error) => {
       console.error(error);
     })
-  }
 
-
-
-
-  async signOut(): Promise<void>{
-   await this._authService.signOut().then( async () => {
-    await this._router.navigate(['/login']);
-    this.toastMessage('Has cerrado sesion correctamente!');
-   }).catch(async () => {
-    this.toastMessage('Ha ocurrido un error', false)
-   })
+    this._homeService.getCharacters().subscribe(response => {
+      this.characters = response.results 
+    })
   }
 
 }
