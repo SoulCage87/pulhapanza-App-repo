@@ -13,7 +13,8 @@ export const environment = {
       , "authDomain": "pulha-app-f377c.firebaseapp.com"
       , "messagingSenderId": "232780503512"
     },
-    API_URL: 'https://rickandmortyapi.com/api/character'
+    API_URL: 'https://rickandmortyapi.com/api/character',
+    API_KEY_GEMINI: 'AIzaSyC2VtHrmzQNlcc1kS_XiSGA4FfXd8T74ow'
 };
 
 /*

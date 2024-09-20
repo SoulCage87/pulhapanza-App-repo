@@ -24,7 +24,7 @@ export class GalleryPage implements OnInit {
       this.photos = data.map((gallery) => gallery.photo)
       console.log(this.photos);
     })
-  }
+  } 
 
 
 

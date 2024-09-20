@@ -18,6 +18,10 @@ export const routes: Routes = [
           {
             path: 'profile',
             loadComponent: () => import('../../../../profile/pages/profile/profile.page').then((m) => m.ProfilePage),
+          },
+          {
+            path: 'chat',
+            loadComponent: () => import('../../../../gemini/pages/gemini/gemini.page').then((m) => m.GeminiPage),
           }
        ]
     },

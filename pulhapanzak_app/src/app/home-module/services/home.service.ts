@@ -36,10 +36,7 @@ export class HomeService {
   getCharacters(): Observable<ApiResponse> {
     return this._http.get<ApiResponse>(`${api}`).pipe(
       tap((response) => response),
-      catchError((error) => {
-        this.toastMessage('Error al obtener los personajes', true);
-        throw error
-      })
+      catchError(this.handlerError<ApiResponse>('Ha ocurrido un error! Vuelvalo a intentar mas tarde'))
     )
   }
 

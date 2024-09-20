@@ -24,6 +24,10 @@ export const routes: Routes = [
     path: '',
     loadChildren: () => import('./shared/ui/pages/tabs-page/tabs.routes').then(m => m.routes),
     canActivate: [() => inject(AuthGuardService).canActive()]
+  },  {
+    path: 'gemini',
+    loadComponent: () => import('./gemini/pages/gemini/gemini.page').then( m => m.GeminiPage)
   }
+
 
 ];
