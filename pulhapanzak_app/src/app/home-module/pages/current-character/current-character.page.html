@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <p (click)="goBack()">
+      <ion-icon id="arrow-back" name="arrow-back">
+
+      </ion-icon>
+    </p>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">CurrentCharacter</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <ion-img [src]="image" id="character-img"></ion-img>
+    <h3>{{this.name}}</h3>
+    <p>{{this.status}}</p>
+  </div>
+
+  <ion-card></ion-card>
+
+
+
+
+
+</ion-content>
