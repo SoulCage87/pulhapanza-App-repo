@@ -19,6 +19,7 @@ export class HomePage implements OnInit {
 
   private _authService: AuthService = inject(AuthService);
   private _homeService: HomeService = inject(HomeService);
+  private _router: Router = inject(Router);
 
   nombre: string = '';
   apellido: string = '';
@@ -33,8 +34,16 @@ export class HomePage implements OnInit {
     })
 
     this._homeService.getCharacters().subscribe(response => {
-      this.characters = response.results 
+      this.characters = response.results
     })
+  }
+
+  goCurrentCharacter(character: any): void {
+    this._router.navigate(['/current-character'], {
+      queryParams: {
+        data: JSON.stringify(character)
+      }
+    });
   }
 
 }

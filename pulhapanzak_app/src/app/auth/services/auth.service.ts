@@ -6,6 +6,8 @@ import {
   sendPasswordResetEmail,
   UserCredential,
   ActionCodeSettings,
+  GoogleAuthProvider,
+  signInWithPopup,
   onAuthStateChanged,
   User
 } from '@angular/fire/auth';
@@ -43,6 +45,11 @@ export class AuthService {
     })
   }
 
+  async signInWithGoogle(): Promise<UserCredential> {
+    const provider = new GoogleAuthProvider();
+    return await signInWithPopup(this._auth, provider)
+  }
+
   async getCurrentUserId(): Promise<string | null> {
     const user = await this.getCurrenUser();
     return user?.uid ?? null;
@@ -61,7 +68,7 @@ export class AuthService {
       return {} as registerDto;
     }
   }
-  
+
   async isUserLogged(): Promise<boolean> {
     return new Promise<boolean>((resolve, reject) => {
       this._auth.onAuthStateChanged((user: User | null) => {

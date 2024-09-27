@@ -79,7 +79,7 @@ export class ResetPage {
     this._router.navigate(['/login']);
   }
 
-  async resetPass() {
+  async resetPass(): Promise<void> {
     this.spinner = true;
     this.disabled = true;
     try {

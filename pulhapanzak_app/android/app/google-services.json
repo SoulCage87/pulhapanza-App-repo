@@ -12,7 +12,20 @@
           "package_name": "com.SamuelGalo.pulhaApp"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "232780503512-fjsa3r9nr0dggeeu0bh9bl5fogspkcfo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.SamuelGalo.pulhaApp",
+            "certificate_hash": "6b9b981e17e97290bae69d6bbee2bc92449bf480"
+          }
+        },
+        {
+          "client_id": "232780503512-55u5apglrm0ccfjder75mnt70ef0fve7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyD_ujgXYYQS83WlrPdBq5XFXW5LevBnlIo"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "232780503512-55u5apglrm0ccfjder75mnt70ef0fve7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

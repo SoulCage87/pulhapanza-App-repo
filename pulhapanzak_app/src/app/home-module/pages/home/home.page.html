@@ -15,6 +15,7 @@
 
 <div *ngFor="let character of characters">
   <app-card
+    (click)="goCurrentCharacter(character)"
   [name]="character.name"
   [species]="character.species"
   [status]="character.status"

@@ -127,7 +127,21 @@ onSubmit(): void {
 }
 
  async googleSignIn(): Promise<void> {
- await this.toastMessage('Proximamente!', false); 
+   this.spinner = true;
+   this.disabled = true;
+
+   this._authService.signInWithGoogle().then(async (res) => {
+     console.log(res);
+     await this.toastMessage('Login exitoso', false);
+     this._router.navigate(['/tabs/home']);
+     this.loginForm.reset();
+     this.spinner = false;
+     this.disabled = false;
+   }).catch(async () => {
+     this.spinner = false;
+     this.disabled = false;
+     await this.toastMessage('Inicio de Sesion Fallado!');
+   })
 }
 
 goRegister(): void {

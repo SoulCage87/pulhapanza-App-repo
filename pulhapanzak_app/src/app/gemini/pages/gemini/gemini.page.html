@@ -21,6 +21,11 @@ placeholder="Escribe tu mensaje..."
   <ion-spinner name="crescent" *ngIf="spinner()"></ion-spinner>
   Enviar
 </ion-button>
+<ion-button (click)="onPickImage()">
+  <ion-icon name="image-outline"></ion-icon>
+</ion-button>
+
+<img [src]="resultImage" alt="">
 
 <ion-textarea [ngModel]="result()" readonly autoGrow="true"></ion-textarea>
 

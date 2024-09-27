@@ -27,6 +27,10 @@ export const routes: Routes = [
   },  {
     path: 'gemini',
     loadComponent: () => import('./gemini/pages/gemini/gemini.page').then( m => m.GeminiPage)
+  },
+  {
+    path: 'current-character',
+    loadComponent: () => import('./home-module/pages/current-character/current-character.page').then( m => m.CurrentCharacterPage)
   }
 
 
